@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SubBox Admin — advanced subscription management portal.">
+  <title>SubBox Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/admin/admin.css">
+</head>
+<body>
+<div class="admin-container">
+
+  <!-- ===== HEADER ===== -->
+  <div class="admin-header">
+    <div class="title-section">
+      <h1>📦 Sub<span class="grad">Box</span> Admin</h1>
+      <p>Advanced subscription management portal</p>
+    </div>
+    <div class="header-controls">
+      <span class="role-label">Role:</span>
+      <select id="roleSwitcher" class="role-select">
+        <option value="super_admin">👑 Super Admin</option>
+        <option value="manager">🛠️ Manager</option>
+        <option value="viewer">👁️ Viewer</option>
+      </select>
+      <span id="roleBadge" class="role-badge"></span>
+    </div>
+  </div>
+
+  <!-- ===== STATS ROW ===== -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <h3>📋 Total Subscribers</h3>
+      <div class="stat-number" id="totalSubCount">0</div>
+      <div class="stat-note">All plans combined</div>
+    </div>
+    <div class="stat-card">
+      <h3>✨ Add-ons Active</h3>
+      <div class="stat-number" id="totalExtrasCount">0</div>
+      <div class="stat-note">Conditional features enabled</div>
+    </div>
+    <div class="stat-card">
+      <h3>🎁 Premium Rate</h3>
+      <div class="stat-number" id="premiumRate">0%</div>
+      <div class="stat-note">Subscribers with extras</div>
+    </div>
+    <div class="stat-card">
+      <h3>🔴 High Churn Risk</h3>
+      <div class="stat-number" id="churnRiskCount">0</div>
+      <div class="stat-note">Needs immediate attention</div>
+    </div>
+  </div>
+
+  <!-- ===== TAB NAV ===== -->
+  <div class="admin-tabs">
+    <button class="admin-tab-btn active" data-tab="dashboard"  onclick="switchAdminTab('dashboard')">📊 Dashboard</button>
+    <button class="admin-tab-btn" data-tab="bulk"       onclick="switchAdminTab('bulk')">📝 Bulk Updater</button>
+    <button class="admin-tab-btn" data-tab="status"     onclick="switchAdminTab('status')">🔄 Status Machine</button>
+    <button class="admin-tab-btn" data-tab="churn"      onclick="switchAdminTab('churn')">📉 Churn Analysis</button>
+    <button class="admin-tab-btn" data-tab="inventory"  onclick="switchAdminTab('inventory')">📦 Inventory</button>
+    <button class="admin-tab-btn" data-tab="audit"      onclick="switchAdminTab('audit')">🕵️ Audit Trail</button>
+  </div>
+
+  <!-- ===== TAB: DASHBOARD ===== -->
+  <div id="tab-dashboard" class="admin-tab-panel active">
+    <div class="admin-grid">
+      <div>
+        <!-- Create -->
+        <div class="core-panel">
+          <div class="panel-header"><h2>➕ Create Subscription</h2></div>
+          <div class="panel-content">
+            <div class="form-row">
+              <div class="input-group">
+                <label>Customer Name</label>
+                <input type="text" id="customerName" placeholder="e.g. Sarah Johnson" autocomplete="off" data-perm="create">
+              </div>
+              <div class="input-group">
+                <label>Base Plan</label>
+                <select id="basePlan" data-perm="create">
+                  <option value="Starter Box">📦 Starter Box ($29)</option>
+                  <option value="Deluxe Box">✨ Deluxe Box ($49)</option>
+                  <option value="Family Box">👪 Family Box ($79)</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>Customer Type</label>
+                <select id="customerType" data-perm="create">
+                  <option value="new">🆕 New</option>
+                  <option value="old">🔁 Returning</option>
+                </select>
+              </div>
+              <button id="createSubBtn" data-perm="create">➕ Create</button>
+            </div>
+            <div class="info-note">⚙️ Billing & inventory check run automatically on creation.</div>
+          </div>
+        </div>
+        <!-- Add-ons -->
+        <div class="extend-panel">
+          <div class="panel-header"><h2>🎁 Apply Add-ons</h2></div>
+          <div class="panel-content">
+            <div class="extend-options">
+              <div class="extend-item"><input type="checkbox" id="giftWrapToggle" data-perm="bulk"><label>🎀 Premium Gift Wrap +$8</label></div>
+              <div class="extend-item"><input type="checkbox" id="priorityShippingToggle" data-perm="bulk"><label>🚚 Priority Shipping +$12</label></div>
+              <div class="extend-item"><input type="checkbox" id="personalizedNoteToggle" data-perm="bulk"><label>💌 Handwritten Note +$5</label></div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:1rem">
+              <select id="extendSubscriptionSelect" style="flex:1;min-width:0" data-perm="bulk"></select>
+              <button id="applyExtendBtn" class="btn-outline" data-perm="bulk">✨ Apply</button>
+            </div>
+          </div>
+        </div>
+        <!-- Subscriptions list -->
+        <div class="subscription-list">
+          <div class="panel-header"><h2>📋 Active Subscriptions</h2></div>
+          <div class="panel-content" id="subscriptionsListContainer">
+            <div class="empty-msg">No subscriptions yet.</div>
+          </div>
+        </div>
+      </div>
+      <!-- sidebar tips -->
+      <div style="align-self:start">
+        <div class="core-panel">
+          <div class="panel-header"><h2>📐 Admin Tips</h2></div>
+          <div class="panel-content">
+            <ul class="tips-list">
+              <li>✅ Use tabs above to access all advanced features.</li>
+              <li>🔐 Switch roles to test permission gates.</li>
+              <li>📉 Churn scores update in real time.</li>
+              <li>⚠️ Inventory alerts fire below threshold.</li>
+              <li>🕵️ Every action is logged in the Audit Trail.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB: BULK UPDATER ===== -->
+  <div id="tab-bulk" class="admin-tab-panel">
+    <div class="core-panel">
+      <div class="panel-header">
+        <h2>📝 Bulk Content Updater</h2>
+        <span class="panel-note">Select subscribers then apply a batch action.</span>
+      </div>
+      <div class="panel-content">
+        <div class="bulk-toolbar" data-perm="bulk">
+          <select id="bulkAction" data-perm="bulk">
+            <option value="upgrade">⬆️ Upgrade to Deluxe Box</option>
+            <option value="downgrade">⬇️ Downgrade to Starter Box</option>
+            <option value="pause">⏸ Pause Subscription</option>
+            <option value="activate">▶️ Re-activate Subscription</option>
+            <option value="add_giftwrap">🎀 Add Gift Wrap Add-on</option>
+          </select>
+          <button id="applyBulkBtn" data-perm="bulk">⚡ Apply to Selected</button>
+        </div>
+        <div id="bulkList"><p class="empty-msg">No subscriptions yet.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB: STATUS MACHINE ===== -->
+  <div id="tab-status" class="admin-tab-panel">
+    <div class="core-panel">
+      <div class="panel-header">
+        <h2>🔄 Real-time Status Machine</h2>
+        <span class="panel-note">active → paused → churned → reactivated</span>
+      </div>
+      <div class="panel-content" id="statusMachineList">
+        <p class="empty-msg">No subscriptions yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB: CHURN ANALYSIS ===== -->
+  <div id="tab-churn" class="admin-tab-panel">
+    <div class="stats-row" style="margin-bottom:1.5rem">
+      <div class="stat-card"><h3>🔴 High Risk</h3><div class="stat-number" id="churnHighCount">0</div></div>
+      <div class="stat-card"><h3>🟡 Medium Risk</h3><div class="stat-number" id="churnMedCount">0</div></div>
+      <div class="stat-card"><h3>🟢 Low Risk</h3><div class="stat-number" id="churnLowCount">0</div></div>
+    </div>
+    <div class="core-panel">
+      <div class="panel-header">
+        <h2>📉 Churn Prediction Analysis</h2>
+        <span class="panel-note">Scored by: status, skips, plan tier, add-ons</span>
+      </div>
+      <div class="panel-content" id="churnList">
+        <p class="empty-msg">No subscriptions yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB: INVENTORY ===== -->
+  <div id="tab-inventory" class="admin-tab-panel">
+    <div class="core-panel">
+      <div class="panel-header">
+        <h2>📦 Inventory Recorder & Alerts</h2>
+        <span id="invAlertBadge" class="inv-badge">Loading...</span>
+      </div>
+      <div class="panel-content" id="inventoryList"></div>
+    </div>
+  </div>
+
+  <!-- ===== TAB: AUDIT TRAIL ===== -->
+  <div id="tab-audit" class="admin-tab-panel">
+    <div class="core-panel">
+      <div class="panel-header">
+        <h2>🕵️ System Audit Trail</h2>
+        <div class="audit-toolbar">
+          <input type="text" id="auditFilter" placeholder="Filter by action or detail..." style="max-width:260px">
+          <button id="exportAuditBtn" class="btn-outline btn-sm" data-perm="export">📥 Export CSV</button>
+          <button id="clearAuditBtn" class="btn-outline btn-sm" data-perm="export" style="color:var(--danger);border-color:var(--danger)">🗑 Clear</button>
+        </div>
+      </div>
+      <div class="panel-content" style="padding:0;overflow-x:auto">
+        <table class="admin-table audit-table">
+          <thead><tr>
+            <th>Timestamp</th><th>Role</th><th>Action</th><th>Detail</th><th>Target</th>
+          </tr></thead>
+          <tbody id="auditTbody"><tr><td colspan="5" class="empty-msg">No entries yet.</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /admin-container -->
+
+<!-- Toast container -->
+<div id="adminToastContainer"></div>
+
+<script src="../JS/admin/admin.js"></script>
+</body>
+</html>

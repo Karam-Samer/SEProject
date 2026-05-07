@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="SubBox Login — sign in or create your subscription account.">
+  <title>SubBox — Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../CSS/plugins/bootstrap.min.css">
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="../CSS/login/login.css">
+</head>
+<body>
+
+  <h1 class="site-title">Sub<span class="accent">Box</span></h1>
+  <div class="title-rule"></div>
+
+  <div class="card">
+
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">Sign In</button>
+      <button class="tab-btn" id="tab-register" onclick="switchTab('register')">Create Account</button>
+    </div>
+
+    <div class="form-panels">
+
+      <!-- ===== LOGIN PANEL ===== -->
+      <div class="form-panel active" id="panel-login">
+        <h2 class="form-heading">Welcome back.</h2>
+        <p class="form-sub">Sign in to continue to your account</p>
+
+        <form id="login-form" action="/login" method="POST" novalidate>
+          <div class="field">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" name="email" placeholder="you@example.com" autocomplete="email" required/>
+          </div>
+          <div class="field">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="password" placeholder="••••••••••" autocomplete="current-password" required/>
+          </div>
+          <button type="submit" class="btn-submit">Sign In</button>
+        </form>
+      </div>
+
+      <!-- ===== REGISTER PANEL ===== -->
+      <div class="form-panel" id="panel-register">
+        <h2 class="form-heading">Join us.</h2>
+        <p class="form-sub">Create your account in moments</p>
+
+        <form id="register-form" action="/register" method="POST" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="reg-first">First Name</label>
+              <input type="text" id="reg-first" name="first_name" placeholder="Jane" autocomplete="given-name" required/>
+            </div>
+            <div class="field">
+              <label for="reg-last">Last Name</label>
+              <input type="text" id="reg-last" name="last_name" placeholder="Doe" autocomplete="family-name" required/>
+            </div>
+          </div>
+          <div class="field">
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" name="email" placeholder="you@example.com" autocomplete="email" required/>
+          </div>
+          <div class="field">
+            <label for="reg-password">Password</label>
+            <input type="password" id="reg-password" name="password" placeholder="Min. 8 characters" autocomplete="new-password" minlength="8" required/>
+          </div>
+          <div class="field">
+            <label for="reg-confirm">Confirm Password</label>
+            <input type="password" id="reg-confirm" name="confirm_password" placeholder="Repeat password" autocomplete="new-password" minlength="8" required/>
+          </div>
+
+          <p class="terms">
+            By creating an account you agree to our
+            <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a> and
+            <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>.
+          </p>
+
+          <button type="submit" class="btn-submit">Create Account</button>
+        </form>
+      </div>
+
+    </div><!-- /form-panels -->
+
+    <div class="card-footer" id="card-footer">
+      Don't have an account? <a href="#" onclick="switchTab('register'); return false;">Create one</a>
+    </div>
+
+  </div><!-- /card -->
+
+
+  <!-- ============ TERMS OF SERVICE MODAL ============ -->
+  <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="termsModalLabel">
+            <i class="modal-icon">📄</i> Terms of Service
+          </h5>
+          <button type="button" class="btn-modal-close" data-bs-dismiss="modal" aria-label="Close">&#x2715;</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-lead">Last updated: May 7, 2025</p>
+
+          <h6>1. Acceptance of Terms</h6>
+          <p>By accessing or using SubBox, you agree to be bound by these Terms of Service. If you do not agree, please do not use our platform.</p>
+
+          <h6>2. Subscription Plans</h6>
+          <p>SubBox offers tiered subscription plans (Starter, Premium, Elite). Your selected plan determines the number of items per box, delivery frequency, and swap limits. All pricing is displayed at checkout and subject to change with 30 days' notice.</p>
+
+          <h6>3. Box Customization & Swaps</h6>
+          <p>Subscribers may customize their upcoming box contents within the limits of their plan tier. Swap requests must be submitted before the monthly box lock date. Unused swaps do not carry over to the next billing cycle.</p>
+
+          <h6>4. Billing & Cancellation</h6>
+          <p>Subscriptions are billed monthly on the date of your initial purchase. You may cancel anytime from your account dashboard. Cancellations take effect at the end of the current billing period — no partial refunds are issued.</p>
+
+          <h6>5. Delivery & Shipping</h6>
+          <p>SubBox ships to addresses within supported regions. Estimated delivery windows are provided at checkout. SubBox is not liable for delays caused by third-party carriers or events outside our control.</p>
+
+          <h6>6. Skip & Pause</h6>
+          <p>You may skip up to 2 consecutive months per calendar year. A skip must be requested before the monthly lock date shown in your dashboard. Pausing beyond 2 months may result in plan cancellation.</p>
+
+          <h6>7. Referral Program</h6>
+          <p>Referral credits are awarded when a referred user completes their first paid subscription month. Credits are non-transferable, have no cash value, and expire after 12 months of account inactivity.</p>
+
+          <h6>8. Prohibited Use</h6>
+          <p>You may not use SubBox for fraudulent activity, abuse of promotional offers, or resale of subscription items. Violation may result in immediate account termination without refund.</p>
+
+          <h6>9. Intellectual Property</h6>
+          <p>All content on the SubBox platform — including branding, product curation, and UI — is the property of SubBox and protected by applicable intellectual property laws.</p>
+
+          <h6>10. Limitation of Liability</h6>
+          <p>SubBox's total liability to you for any claim shall not exceed the amount paid in the 3 months preceding the claim. We are not liable for indirect, incidental, or consequential damages.</p>
+
+          <h6>11. Changes to Terms</h6>
+          <p>We reserve the right to update these terms at any time. Continued use of SubBox after changes constitutes your acceptance of the revised terms.</p>
+
+          <h6>12. Contact</h6>
+          <p>For questions about these terms, contact us at <strong>legal@subbox.io</strong>.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-modal-accept" data-bs-dismiss="modal">I Understand</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PRIVACY POLICY MODAL ============ -->
+  <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="privacyModalLabel">
+            <i class="modal-icon">🔒</i> Privacy Policy
+          </h5>
+          <button type="button" class="btn-modal-close" data-bs-dismiss="modal" aria-label="Close">&#x2715;</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-lead">Last updated: May 7, 2025</p>
+
+          <h6>1. Information We Collect</h6>
+          <p>We collect information you provide directly — such as your name, email address, delivery address, and payment details — as well as usage data generated through your interaction with SubBox.</p>
+
+          <h6>2. How We Use Your Information</h6>
+          <p>Your information is used to: process and fulfil your subscription orders, personalize product curation, send transactional and service emails, improve platform performance, and administer the referral program.</p>
+
+          <h6>3. Data Storage & Security</h6>
+          <p>All data is stored locally in your browser via <code>localStorage</code> for session persistence. We implement industry-standard measures to protect your personal data from unauthorized access, disclosure, or loss.</p>
+
+          <h6>4. Cookies</h6>
+          <p>SubBox uses essential cookies for authentication and session management. We do not use third-party advertising cookies. You may disable cookies in your browser settings, though this may affect platform functionality.</p>
+
+          <h6>5. Sharing of Information</h6>
+          <p>We do not sell your personal data to third parties. We may share information with trusted service providers (e.g., payment processors, shipping carriers) strictly for the purpose of fulfilling your subscription.</p>
+
+          <h6>6. Referral Data</h6>
+          <p>When you share a referral code, we record the referral relationship to correctly attribute credits. No sensitive personal information of the referee is shared with the referrer beyond the credit count.</p>
+
+          <h6>7. Data Retention</h6>
+          <p>We retain your account data for as long as your account is active, or as required by law. Upon account closure, personal data is anonymized or deleted within 90 days.</p>
+
+          <h6>8. Your Rights</h6>
+          <p>You have the right to access, correct, or delete your personal data at any time. To exercise these rights, contact us at <strong>privacy@subbox.io</strong>. We will respond within 30 days.</p>
+
+          <h6>9. Children's Privacy</h6>
+          <p>SubBox is not intended for users under the age of 16. We do not knowingly collect data from children. If you believe a child has provided us with personal data, please contact us immediately.</p>
+
+          <h6>10. Changes to This Policy</h6>
+          <p>We may update this Privacy Policy periodically. We will notify you of material changes via email or a prominent notice on the platform. Continued use constitutes acceptance.</p>
+
+          <h6>11. Contact</h6>
+          <p>For privacy-related concerns, reach us at <strong>privacy@subbox.io</strong>.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-modal-accept" data-bs-dismiss="modal">Got It</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Bootstrap JS (required for modal) -->
+  <script src="../JS/plugins/bootstrap.min.js"></script>
+  <script src="../JS/login/login.js"></script>
+
+</body>
+</html>

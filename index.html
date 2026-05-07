@@ -1,0 +1,603 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="SubBox - Premium subscription boxes curated for you. Choose your theme, customize your items, and get monthly deliveries with full swap control.">
+  <title>SubBox | Premium Subscription Boxes</title>
+  <link rel="shortcut icon" href="images/first-logo.png" type="image/x-icon">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS Plugins -->
+  <link rel="stylesheet" href="./CSS/plugins/all.min.css">
+  <link rel="stylesheet" href="./CSS/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="./CSS/plugins/animate.css">
+  <link rel="stylesheet" href="./CSS/plugins/headline.css">
+
+  <!-- JS Plugins -->
+  <script src="./JS/plugins/bootstrap.min.js" defer></script>
+  <script src="./JS/plugins/jquery.js" defer></script>
+  <script src="./JS/plugins/wow.js" defer></script>
+  <!-- App CSS -->
+  <link rel="stylesheet" href="./CSS/global.css">
+  <link rel="stylesheet" href="./CSS/keyframes.css">
+  <link rel="stylesheet" href="./CSS/index.css">
+  <link rel="stylesheet" href="./CSS/index.responsive.css">
+
+  <script src="./JS/plugins/headline.js" defer></script>
+
+  <!-- App JS Modules (order matters â€” dependencies first) -->
+  <script src="./JS/api.js" defer></script>
+  <script src="./JS/subscription.js" defer></script>
+  <script src="./JS/swap.js" defer></script>
+  <script src="./JS/tracking.js" defer></script>
+  <script src="./JS/referral.js" defer></script>
+  <script src="./JS/function.js" defer></script>
+  <script src="./JS/index.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <span class="brand-text">Sub<span class="accent">Box</span></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#Home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#Plans">Plans</a></li>
+          <li class="nav-item"><a class="nav-link" href="#Browse">Browse</a></li>
+          <li class="nav-item"><a class="nav-link" href="#MyBox">My Box</a></li>
+          <li class="nav-item"><a class="nav-link" href="#Track">Track</a></li>
+          <li class="nav-item"><a class="nav-link" href="#Referrals">Referrals</a></li>
+        </ul>
+        <form class="d-flex me-3" role="search" id="searchForm">
+          <input class="form-control me-2" type="search" placeholder="Search products..." aria-label="Search"
+            id="searchInput" />
+          <button class="btn btn-accent" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <ul class="list-unstyled d-flex mb-0 nav-icons">
+          <li class="me-3 position-relative">
+            <i class="fa-solid fa-heart" onclick="openPopup('wish')"></i>
+            <p class="d-none count-w">0</p>
+          </li>
+          <li class="me-3 position-relative">
+            <i class="fa-solid fa-cart-shopping" onclick="openPopup('shop')"></i>
+            <p class="d-none count-s">0</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-user" onclick="openPopup('login')"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <header id="Home">
+    <div class="hero-bg">
+      <!-- Decorative floating shapes -->
+      <div class="hero-shape shape-1"></div>
+      <div class="hero-shape shape-2"></div>
+      <div class="hero-shape shape-3"></div>
+      <div class="hero-shape shape-4"></div>
+
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-lg-7 hero-content">
+            <p class="hero-badge wow animate__fadeInDown" data-wow-delay="0.2s">
+              <i class="fa-solid fa-star me-2"></i>Rated #1 Subscription Platform
+            </p>
+            <h1 class="hero-title wow animate__fadeInUp" data-wow-delay="0.3s">
+              Curated Boxes.<br>
+              <span class="cd-headline clip is-full-width">
+                <span class="cd-words-wrapper">
+                  <b class="is-visible">Delivered Monthly.</b>
+                  <b>Fully Customizable.</b>
+                  <b>Uniquely Yours.</b>
+                </span>
+              </span>
+            </h1>
+            <p class="hero-subtitle wow animate__fadeInUp" data-wow-delay="0.5s">
+              Choose from curated themes, swap items you don't love, track every delivery, and earn rewards for sharing
+              with friends.
+            </p>
+            <div class="hero-buttons wow animate__fadeInUp" data-wow-delay="0.7s">
+              <a href="#Plans" class="btn btn-accent btn-lg me-3">
+                <i class="fa-solid fa-rocket me-2"></i>Get Started
+              </a>
+              <a href="#Browse" class="btn btn-outline-light btn-lg">
+                <i class="fa-solid fa-boxes-stacked me-2"></i>Browse Boxes
+              </a>
+            </div>
+            <div class="hero-stats wow animate__fadeInUp" data-wow-delay="0.9s">
+              <div class="stat-item">
+                <h3>50K+</h3>
+                <p>Happy Subscribers</p>
+              </div>
+              <div class="stat-item">
+                <h3>200+</h3>
+                <p>Premium Products</p>
+              </div>
+              <div class="stat-item">
+                <h3>4.9â˜…</h3>
+                <p>Average Rating</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 hero-visual d-none d-lg-block">
+            <div class="hero-box-illustration wow animate__fadeInRight" data-wow-delay="0.5s">
+              <div class="floating-card card-1">
+                <i class="fa-solid fa-spa"></i>
+                <span>Beauty Box</span>
+              </div>
+              <div class="floating-card card-2">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Tech Box</span>
+              </div>
+              <div class="floating-card card-3">
+                <i class="fa-solid fa-couch"></i>
+                <span>Home Box</span>
+              </div>
+              <div class="floating-card card-4">
+                <i class="fa-solid fa-shirt"></i>
+                <span>Fashion Box</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <section id="HowItWorks" class="py-5">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <p class="section-label wow animate__fadeInUp">Simple Process</p>
+        <h2 class="wow animate__fadeInUp" data-wow-delay="0.1s">How It Works</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="hiw-card wow animate__fadeInUp" data-wow-delay="0.2s">
+            <div class="hiw-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="hiw-step">01</div>
+            <h4>Choose Your Theme</h4>
+            <p>Pick from Beauty, Tech, Home, or Fashion categories. Each theme is curated by experts.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="hiw-card wow animate__fadeInUp" data-wow-delay="0.4s">
+            <div class="hiw-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+            <div class="hiw-step">02</div>
+            <h4>Customize & Swap</h4>
+            <p>Browse products, add favorites, and swap anything you don't love before your box ships.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="hiw-card wow animate__fadeInUp" data-wow-delay="0.6s">
+            <div class="hiw-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="hiw-step">03</div>
+            <h4>Get It Delivered</h4>
+            <p>Track your package in real-time. Free shipping on all orders with our premium plans.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SUBSCRIPTION TIERS ==================== -->
+  <section id="Plans" class="py-5">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <p class="section-label wow animate__fadeInUp">Pricing Plans</p>
+        <h2 class="wow animate__fadeInUp" data-wow-delay="0.1s">Choose Your Plan</h2>
+      </div>
+      <div class="row g-4 justify-content-center" id="tiersContainer">
+        <!-- Starter -->
+        <div class="col-lg-4 col-md-6 wow animate__fadeInUp" data-wow-delay="0.2s">
+          <div class="tier-card" data-tier="starter">
+            <div class="tier-header">
+              <i class="fa-solid fa-box tier-icon"></i>
+              <h3>Starter</h3>
+              <div class="tier-price">
+                <span class="currency">$</span>
+                <span class="amount">19</span>
+                <span class="cents">.99</span>
+                <span class="period">/month</span>
+              </div>
+            </div>
+            <ul class="tier-features">
+              <li><i class="fa-solid fa-check"></i> 3 curated items per box</li>
+              <li><i class="fa-solid fa-check"></i> Monthly delivery</li>
+              <li><i class="fa-solid fa-check"></i> Basic customization</li>
+              <li><i class="fa-solid fa-check"></i> Free shipping over $50</li>
+              <li><i class="fa-solid fa-check"></i> Cancel anytime</li>
+            </ul>
+            <button class="btn btn-tier" onclick="handleSubscribe('starter')">Subscribe Now</button>
+          </div>
+        </div>
+        <!-- Premium -->
+        <div class="col-lg-4 col-md-6 wow animate__fadeInUp" data-wow-delay="0.4s">
+          <div class="tier-card featured" data-tier="premium">
+            <div class="tier-badge">Most Popular</div>
+            <div class="tier-header">
+              <i class="fa-solid fa-gem tier-icon"></i>
+              <h3>Premium</h3>
+              <div class="tier-price">
+                <span class="currency">$</span>
+                <span class="amount">39</span>
+                <span class="cents">.99</span>
+                <span class="period">/month</span>
+              </div>
+            </div>
+            <ul class="tier-features">
+              <li><i class="fa-solid fa-check"></i> 6 curated items per box</li>
+              <li><i class="fa-solid fa-check"></i> Bi-weekly delivery option</li>
+              <li><i class="fa-solid fa-check"></i> Full swap & customize</li>
+              <li><i class="fa-solid fa-check"></i> Free shipping always</li>
+              <li><i class="fa-solid fa-check"></i> Priority support</li>
+              <li><i class="fa-solid fa-check"></i> 1 free add-on per box</li>
+            </ul>
+            <button class="btn btn-tier btn-featured" onclick="handleSubscribe('premium')">Subscribe Now</button>
+          </div>
+        </div>
+        <!-- Elite -->
+        <div class="col-lg-4 col-md-6 wow animate__fadeInUp" data-wow-delay="0.6s">
+          <div class="tier-card" data-tier="elite">
+            <div class="tier-badge elite-badge">Best Value</div>
+            <div class="tier-header">
+              <i class="fa-solid fa-crown tier-icon"></i>
+              <h3>Elite</h3>
+              <div class="tier-price">
+                <span class="currency">$</span>
+                <span class="amount">59</span>
+                <span class="cents">.99</span>
+                <span class="period">/month</span>
+              </div>
+            </div>
+            <ul class="tier-features">
+              <li><i class="fa-solid fa-check"></i> 10 premium items per box</li>
+              <li><i class="fa-solid fa-check"></i> Weekly delivery option</li>
+              <li><i class="fa-solid fa-check"></i> Unlimited swaps</li>
+              <li><i class="fa-solid fa-check"></i> Free express shipping</li>
+              <li><i class="fa-solid fa-check"></i> Dedicated concierge</li>
+              <li><i class="fa-solid fa-check"></i> 3 free add-ons per box</li>
+              <li><i class="fa-solid fa-check"></i> Early access to new products</li>
+              <li><i class="fa-solid fa-check"></i> Exclusive member rewards</li>
+            </ul>
+            <button class="btn btn-tier" onclick="handleSubscribe('elite')">Subscribe Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BROWSE & CUSTOMIZE ==================== -->
+  <section id="Browse" class="py-5">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <p class="section-label wow animate__fadeInUp">Product Catalog</p>
+        <h2 class="wow animate__fadeInUp" data-wow-delay="0.1s">Browse & Customize Your Box</h2>
+      </div>
+
+      <!-- Theme Tabs -->
+      <div class="theme-tabs-wrapper mb-4 wow animate__fadeInUp" data-wow-delay="0.2s">
+        <ul class="nav theme-tabs" id="themeTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" data-theme="beauty" type="button" role="tab">
+              <i class="fa-solid fa-spa"></i> Beauty
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" data-theme="tech" type="button" role="tab">
+              <i class="fa-solid fa-microchip"></i> Tech
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" data-theme="home" type="button" role="tab">
+              <i class="fa-solid fa-couch"></i> Home
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" data-theme="fashion" type="button" role="tab">
+              <i class="fa-solid fa-shirt"></i> Fashion
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="row g-4" id="productsGrid">
+        <!-- Loading skeleton -->
+        <div class="col-12 text-center py-5" id="productsLoading">
+          <div class="loading-spinner">
+            <div class="spinner-border text-light" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="text-light mt-3">Loading products...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Results Container (hidden by default) -->
+      <div class="row g-4 d-none" id="searchResultsGrid">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MY BOX ==================== -->
+  <section id="MyBox" class="py-5">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <p class="section-label wow animate__fadeInUp">Your Upcoming Delivery</p>
+        <h2 class="wow animate__fadeInUp" data-wow-delay="0.1s">My Box</h2>
+      </div>
+
+      <!-- Box Status Bar -->
+      <div class="box-status-bar mb-4 wow animate__fadeInUp" data-wow-delay="0.2s">
+        <div class="box-info">
+          <div class="box-count">
+            <span id="boxItemCount">0</span> / <span id="boxItemLimit">3</span> items
+          </div>
+          <div class="box-value">
+            Box Value: <strong>$<span id="boxTotalValue">0.00</span></strong>
+          </div>
+        </div>
+        <div class="box-actions">
+          <button class="btn btn-outline-warning btn-sm me-2" onclick="handleSkipMonth()" id="btnSkip">
+            <i class="fa-solid fa-forward me-1"></i> Skip Month
+          </button>
+          <button class="btn btn-accent btn-sm" onclick="handleLockBox()" id="btnLock">
+            <i class="fa-solid fa-lock me-1"></i> Lock & Ship
+          </button>
+        </div>
+      </div>
+
+      <!-- Box Contents Grid -->
+      <div class="row g-4" id="myBoxGrid">
+        <div class="col-12">
+          <div class="empty-box-message" id="emptyBoxMessage">
+            <i class="fa-solid fa-box-open"></i>
+            <h4>Your box is empty</h4>
+            <p>Browse products above and add items to customize your next delivery.</p>
+            <a href="#Browse" class="btn btn-accent">Browse Products</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Swap Panel (hidden by default) -->
+      <div class="swap-panel d-none" id="swapPanel">
+        <div class="swap-panel-header">
+          <h5><i class="fa-solid fa-arrows-rotate me-2"></i>Swap Item</h5>
+          <button class="btn btn-sm btn-outline-light" onclick="closeSwapPanel()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <p class="swap-instruction">Choose a replacement for: <strong id="swapItemName"></strong></p>
+        <div class="row g-3" id="swapOptionsGrid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DELIVERY TRACKER ==================== -->
+  <section id="Track" class="py-5">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <p class="section-label wow animate__fadeInUp">Real-Time Updates</p>
+        <h2 class="wow animate__fadeInUp" data-wow-delay="0.1s">Delivery Tracker</h2>
+      </div>
+
+      <div class="tracker-container wow animate__fadeInUp" data-wow-delay="0.3s">
+        <!-- No tracking state -->
+        <div id="noTrackingMessage" class="text-center py-5">
+          <i class="fa-solid fa-truck fa-3x mb-3" style="color: rgba(255,255,255,0.3)"></i>
+          <h4 class="text-light">No active deliveries</h4>
+          <p class="text-muted">Lock your box to start a delivery. Track it here in real-time!</p>
+        </div>
+
+        <!-- Tracking Timeline -->
+        <div class="tracking-timeline d-none" id="trackingTimeline">
+          <div class="tracking-id mb-3">
+            <span class="label">Tracking ID:</span>
+            <span class="value" id="trackingId">â€”</span>
+          </div>
+          <div class="timeline-stages" id="timelineStages">
+            <!-- Stages rendered by JS -->
+          </div>
+          <div class="delivery-estimate mt-4 text-center">
+            <p>Estimated Delivery: <strong id="estimatedDelivery">â€”</strong></p>
+            <button class="btn btn-sm btn-outline-info" onclick="handleSimulateProgress()">
+              <i class="fa-solid fa-forward me-1"></i> Simulate Next Stage
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== REFERRAL REWARDS ==================== -->
+  <section id="Referrals" class="py-5">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <p class="section-label wow animate__fadeInUp">Earn Rewards</p>
+        <h2 class="wow animate__fadeInUp" data-wow-delay="0.1s">Referral Program</h2>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <!-- Your Code -->
+        <div class="col-lg-5 wow animate__fadeInLeft" data-wow-delay="0.2s">
+          <div class="referral-card">
+            <div class="referral-icon">
+              <i class="fa-solid fa-share-nodes"></i>
+            </div>
+            <h4>Share Your Code</h4>
+            <p>Give your friends $5 off their first box. You earn $5 for every successful referral!</p>
+            <div class="referral-code-display">
+              <span id="myReferralCode">â€”</span>
+              <button class="btn btn-sm btn-copy" onclick="copyReferralCode()">
+                <i class="fa-solid fa-copy"></i>
+              </button>
+            </div>
+            <div class="referral-stats mt-4">
+              <div class="ref-stat">
+                <i class="fa-solid fa-users"></i>
+                <span id="referralCount">0</span>
+                <small>Referrals</small>
+              </div>
+              <div class="ref-stat">
+                <i class="fa-solid fa-coins"></i>
+                $<span id="creditsEarned">0.00</span>
+                <small>Earned</small>
+              </div>
+              <div class="ref-stat">
+                <i class="fa-solid fa-wallet"></i>
+                $<span id="creditsAvailable">0.00</span>
+                <small>Available</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Apply Code -->
+        <div class="col-lg-5 wow animate__fadeInRight" data-wow-delay="0.4s">
+          <div class="referral-card">
+            <div class="referral-icon">
+              <i class="fa-solid fa-ticket"></i>
+            </div>
+            <h4>Have a Referral Code?</h4>
+            <p>Enter a friend's referral code to get $5 credit applied to your next box delivery.</p>
+            <div class="referral-apply mt-4">
+              <div class="input-group">
+                <input type="text" class="form-control" id="referralCodeInput" placeholder="SUBBOX-XXXXX"
+                  maxlength="12">
+                <button class="btn btn-accent" onclick="handleApplyReferral()">Apply</button>
+              </div>
+              <p class="referral-feedback mt-2" id="referralFeedback"></p>
+            </div>
+
+            <!-- Simulate referral for demo -->
+            <button class="btn btn-outline-info btn-sm mt-4" onclick="handleSimulateReferral()">
+              <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Simulate Incoming Referral
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== POPUPS ==================== -->
+
+  <!-- Login Popup -->
+  <div class="popup" data-popup-name="login" onclick="closePopup()">
+    <div class="box rounded-4 p-4">
+      <div class="head mb-4 text-center">
+        <h3 class="accent-color">Login</h3>
+        <i class="fa-regular fa-circle-xmark accent-color" onclick="closePopup()"></i>
+      </div>
+      <div class="body">
+        <form>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="UserName *" name="userName" id="UserName" required>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Password *" name="password" id="Password" required>
+          </div>
+          <div class="input-group mb-3">
+            <button class="btn btn-accent w-100">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Popup -->
+  <div class="popup" data-popup-name="shop" onclick="closePopup()">
+    <div class="box rounded-4 p-4">
+      <div class="head mb-4 text-center">
+        <h3 class="accent-color">Cart</h3>
+        <i class="fa-regular fa-circle-xmark accent-color" onclick="closePopup()"></i>
+      </div>
+      <div class="body">
+        <p class="alert alert-dark text-center" id="cartEmptyMsg">Your cart is empty</p>
+        <div class="row" id="popupCartBody">
+        </div>
+        <button class="btn btn-accent d-block w-100 d-none" id="cartBuyBtn">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Popup -->
+  <div class="popup" data-popup-name="wish" onclick="closePopup()">
+    <div class="box rounded-4 p-4">
+      <div class="head mb-4 text-center">
+        <h3 class="accent-color">Wishlist</h3>
+        <i class="fa-regular fa-circle-xmark accent-color" onclick="closePopup()"></i>
+      </div>
+      <div class="body">
+        <p class="alert alert-dark text-center" id="wishEmptyMsg">Your wishlist is empty</p>
+        <div class="row" id="popupWishlistBody">
+        </div>
+        <button class="btn btn-accent d-block w-100 d-none" id="wishBuyBtn">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Detail Popup -->
+  <div class="popup" data-popup-name="product" onclick="closePopup()">
+    <div class="box rounded-4 p-4" id="productPopupBox">
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ==================== LOADING SCREEN ==================== -->
+  <div id="LoadingPage">
+    <div class="loading-content">
+      <div class="loading-logo">Sub<span>Box</span></div>
+      <div class="loading-bar">
+        <div class="loading-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+          <span class="footer-brand">Sub<span class="accent">Box</span></span>
+        </div>
+        <div class="col-md-4 text-center mb-3 mb-md-0">
+          <div class="footer-links">
+            <a href="#Home">Home</a>
+            <a href="#Plans">Plans</a>
+            <a href="#Browse">Browse</a>
+            <a href="#Referrals">Referrals</a>
+          </div>
+        </div>
+        <div class="col-md-4 text-center text-md-end">
+          <p class="m-0 text-muted">Â© 2025 <span class="accent-color">SubBox</span>. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
